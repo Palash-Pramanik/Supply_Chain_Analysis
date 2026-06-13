@@ -1,0 +1,86 @@
+========================================================================
+SUPPLY CHAIN PERFORMANCE & LATE DELIVERY RISK MANAGEMENT PROJECT
+========================================================================
+
+PROJECT OVERVIEW
+----------------
+This repository delivers an end-to-end data analytics and machine learning 
+pipeline designed to evaluate global supply chain order fulfillment, isolate 
+operational latencies, and proactively predict late delivery risks[cite: 2]. 
+Utilizing historical fulfillment logs, this project addresses systemic delivery 
+bottlenecks and builds a production-grade predictive model to safeguard 
+customer service level agreements (SLAs) and minimize financial risk exposure[cite: 2].
+
+REPOSITORY STRUCTURE
+--------------------
+* supply_chain.ipynb                    : Core Jupyter Notebook containing data 
+                                          ingestion, pipeline auditing, cleansing, 
+                                          feature engineering, and model training[cite: 2].
+* Supply_Chain_Fulfillment_EDA_Report.docx : Executive-ready document summarizing 
+                                          business KPIs, macro latency drivers, 
+                                          and strategic corporate recommendations[cite: 2].
+* README.txt                            : Technical documentation overview (this file).
+
+DATA PIPELINE & QUALITY AUDITING
+--------------------------------
+The project architecture applies a strict multi-tier pipeline to guarantee data integrity:
+* Raw Dataset Scope : 180,519 observations distributed across 53 features[cite: 2].
+* Feature Pruning   : 33 non-contributing dimensions (such as system identifiers, 
+                      duplicate financial fields, and high-cardinality local 
+                      coordinates) were systematically dropped to prevent data 
+                      leakage and optimize feature spacing[cite: 2].
+* Cohort Refinement : Filtered out canceled shipping statuses to isolate physical 
+                      carrier fulfillment variables, leaving a final active operational 
+                      landscape of 172,765 records[cite: 2].
+
+CORE OPERATIONAL INSIGHTS & KPIs
+---------------------------------
+* Total Active Scope Checked   : 172,765 units[cite: 2]
+* Late Fulfillments Observed   : 94,523 units[cite: 2]
+* Baseline Late Delivery Rate  : 54.71% (Indicates critical process bottlenecks)[cite: 2]
+* Financial Revenue Exposure   : 2.1M $ in profit is tied up in delayed delivery 
+                                 statuses out of 7.5M $ total accumulated profit[cite: 2].
+* Core Latency Drivers         : Standard Class shipping mode (accounting for 
+                                 103,153 orders) shows systemic delays[cite: 2]. Risk 
+                                 peaks significantly during seasonal end-of-quarter 
+                                 volume jumps, early morning warehouse submission brackets, 
+                                 and within specific multi-tier transit regions like 
+                                 Central Africa and South Asia[cite: 2].
+
+PREDICTIVE MODELING & PIPELINE PERFORMANCE
+------------------------------------------
+To preemptively flag late shipments prior to physical carrier handover, an optimized 
+Random Forest Classifier ensemble was built[cite: 2]:
+* Feature Engineering : Implemented Frequency Encoding to process high-cardinality 
+                        categorical features (Type, Customer Segment, Department Name, 
+                        Order Region, Shipping Mode) without inflating dimensions[cite: 2].
+* Balance Alignment   : Applied class balancing techniques to adjust the training array 
+                        and prevent minority class prediction bias[cite: 2].
+* Validation Metrics (Evaluated on an isolated 20% holdout split of 34,553 orders)[cite: 2]:
+  - Global Accuracy : 78%[cite: 2]
+  - Precision       : 82% (Critical threshold minimizing false-alarm buffer allocations)[cite: 2]
+  - Sensitivity     : 78%[cite: 2]
+  - F1-Score        : 0.80[cite: 2]
+
+ENVIRONMENT DEPENDENCIES
+------------------------
+To replicate the execution environment inside 'supply_chain.ipynb', ensure the 
+following Python packages are fully installed:
+* pandas
+* numpy
+* matplotlib
+* seaborn
+* scikit-learn
+* imbalanced-learn (for sampling alignments)
+
+HOW TO RUN
+----------
+1. Clone this project repository to your local directory.
+2. Place the raw data file into your working project root folder.
+3. Install all listed environment dependencies via terminal pip execution:
+   pip install pandas numpy matplotlib seaborn scikit-learn imbalanced-learn
+4. Launch Jupyter Notebook or JupyterLab:
+   jupyter lab
+5. Open 'supply_chain.ipynb' and run all evaluation cells sequentially to reproduce 
+   the data cleaning pipeline, exploratory plots, and model outputs.
+========================================================================
